@@ -59,6 +59,13 @@ class AuthService extends GetxService {
     return await _authRepository.forgotPassword(email);
   }
 
+  Future<Map<String, dynamic>> resetPassword(
+    String token,
+    String newPassword,
+  ) async {
+    return await _authRepository.resetPassword(token, newPassword);
+  }
+
   Future<bool> logout() async {
     await _storageService.clearAuthData();
     isLoggedIn.value = false;

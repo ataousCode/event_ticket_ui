@@ -5,7 +5,6 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     colorScheme: const ColorScheme.dark(
-      background: Color(0xFF1A1B35),
       primary: Colors.cyan,
       secondary: Colors.purple,
       tertiary: Color(0xFF9E86FF),

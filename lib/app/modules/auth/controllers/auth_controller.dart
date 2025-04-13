@@ -98,7 +98,6 @@ class AuthController extends GetxController {
     if (value == null || value.isEmpty) {
       return 'Phone number is required';
     }
-    // Phone validation is handled by the IntlPhoneField widget
     return null;
   }
 
@@ -200,38 +199,38 @@ class AuthController extends GetxController {
     }
   }
 
-  // Future<void> resetPassword() async {
-  //   if (!resetPasswordFormKey.currentState!.validate()) return;
+  Future<void> resetPassword() async {
+    if (!resetPasswordFormKey.currentState!.validate()) return;
 
-  //   isLoading.value = true;
-  //   errorMessage.value = '';
+    isLoading.value = true;
+    errorMessage.value = '';
 
-  //   try {
-  //     final result = await _authService.resetPassword(
-  //       tokenController.text.trim(),
-  //       passwordController.text,
-  //     );
+    try {
+      final result = await _authService.resetPassword(
+        tokenController.text.trim(),
+        passwordController.text,
+      );
 
-  //     if (result['success']) {
-  //       Get.snackbar(
-  //         'Success',
-  //         'Password reset successful. Please login with your new password.',
-  //         snackPosition: SnackPosition.BOTTOM,
-  //         backgroundColor: Colors.green,
-  //         colorText: Colors.white,
-  //         margin: const EdgeInsets.all(8),
-  //         duration: const Duration(seconds: 5),
-  //       );
-  //       Get.offAllNamed(Routes.LOGIN);
-  //     } else {
-  //       errorMessage.value = result['message'] ?? 'Failed to reset password';
-  //     }
-  //   } catch (e) {
-  //     errorMessage.value = 'Error: ${e.toString()}';
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
+      if (result['success']) {
+        Get.snackbar(
+          'Success',
+          'Password reset successful. Please login with your new password.',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green,
+          colorText: Colors.white,
+          margin: const EdgeInsets.all(8),
+          duration: const Duration(seconds: 5),
+        );
+        Get.offAllNamed(Routes.LOGIN);
+      } else {
+        errorMessage.value = result['message'] ?? 'Failed to reset password';
+      }
+    } catch (e) {
+      errorMessage.value = 'Error: ${e.toString()}';
+    } finally {
+      isLoading.value = false;
+    }
+  }
 
   void logout() {
     _authService.logout();

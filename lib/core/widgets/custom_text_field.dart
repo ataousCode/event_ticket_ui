@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onSubmitted;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.label,
     this.hint,
     this.controller,
@@ -36,7 +36,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.onChanged,
     this.onSubmitted,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
